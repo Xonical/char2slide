@@ -87,9 +87,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="MyButton.cpp" />
+    <ClCompile Include="MyDragon.cpp" />
+    <ClCompile Include="MyLabel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DragonFireSDK.h" />
+    <ClInclude Include="MyButton.h" />
+    <ClInclude Include="MyDragon.h" />
+    <ClInclude Include="MyLabel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

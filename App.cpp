@@ -6,12 +6,19 @@
 int LogoImage;
 int LogoView;
 
+
+char a[] = "A";
+char b[] = "B";
+
+
+
+
 void AppMain()
 {
 	// Application initialization code goes here.  Create the items / objects / etc.
 	// that your app will need while it is running.
-	LogoImage=ImageAdd("Images/Logo.png"); // file location: Debug/Assets/Images/Logo.png
-	LogoView=ViewAdd(LogoImage,0,0);
+	LogoImage = ImageAdd("Images/Logo.png"); // file location: Debug/Assets/Images/Logo.png
+	LogoView = ViewAdd(LogoImage, 0, 0);
 }
 
 void AppExit()
@@ -24,5 +31,5 @@ void AppExit()
 
 void OnTimer()
 {
-    // Main loop code goes here.  OnTimer() is called 30 times per second.
+	// Main loop code goes here.  OnTimer() is called 30 times per second.
 }
