@@ -87,13 +87,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="CharButton.cpp" />
+    <ClCompile Include="CharButtonGenerator.cpp" />
     <ClCompile Include="MyButton.cpp" />
+    <ClCompile Include="MyButtonV3.cpp" />
     <ClCompile Include="MyDragon.cpp" />
     <ClCompile Include="MyLabel.cpp" />
+    <ClCompile Include="Quelle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharButton.h" />
+    <ClInclude Include="CharButtonGenerator.h" />
     <ClInclude Include="DragonFireSDK.h" />
     <ClInclude Include="MyButton.h" />
+    <ClInclude Include="MyButtonV3.h" />
     <ClInclude Include="MyDragon.h" />
     <ClInclude Include="MyLabel.h" />
   </ItemGroup>
