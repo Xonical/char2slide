@@ -47,9 +47,9 @@ void AppMain()
 	//ViewSetSize(view, 24, 24);
 	//TextAdd(6, 0, "A", ButtonFont);
 
-	CharButtonGenerator *gen = new CharButtonGenerator();
+	CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815");
 
-	btn = new CharButton('B', 0, 20, 20, onClick, 0);
+	//btn = new CharButton('B', 0, 20, 20, onClick, 0);
 
 
 
@@ -92,10 +92,7 @@ int onClick(int id, int event, int x, int y){
 
 void AppExit()
 {
-	// Application exit code goes here.  Perform any clean up your app might 
-	// need to do in the event of interruption by a phone call or the user
-	// pressing the Home button, or some other event that would cause your
-	// application to terminate.
+
 }
 
 void OnTimer()

@@ -93,7 +93,6 @@
     <ClCompile Include="MyButtonV3.cpp" />
     <ClCompile Include="MyDragon.cpp" />
     <ClCompile Include="MyLabel.cpp" />
-    <ClCompile Include="Quelle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharButton.h" />
