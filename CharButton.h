@@ -12,6 +12,7 @@ public:
 	void setY(int y);
 	int getX();
 	int getY();
+	int getID();
 	int getInitedX();
 	int getInitedY();
 	~CharButton();
@@ -22,9 +23,11 @@ private:
 	int y;
 	int touch;
 	int view;
+	int textfield;
 	int cn;
 	int initedX;
 	int initedY;
+	int id;
 	void repaint();
 };
 

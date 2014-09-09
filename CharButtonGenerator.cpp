@@ -8,6 +8,9 @@ CharButton *charButton;
 int onClick2(int id, int event, int x, int y);
 int offsetX2;
 int offsetY2;
+vector <CharButton> vecCharButtons;
+int currentButtonID;
+CharButton *buttonArray[2];
 
 CharButtonGenerator::CharButtonGenerator(char answer[])
 {
@@ -88,20 +91,14 @@ CharButtonGenerator::CharButtonGenerator(char answer[])
 	// so we must have shuffle again
 	random_shuffle(vecBasic.begin(), vecBasic.end());
 
+	//vecCharButtons = new vector <CharButton>();
 	for (int i = 0; i < 2/*vecBasic.size*/; i++)
 	{
 		//printf("Test:  %d", c);
 		charButton = new CharButton(vecBasic.at(i), i, 20 + i * 30, 20, onClick2, i);
+		//vecCharButtons.push_back(charButton);
+		buttonArray[i] = charButton;
 	}
-
-
-
-
-
-
-
-
-
 }
 
 vector <char> CharButtonGenerator::randomizeBasic(int basicNumbers, int basicLetters){
@@ -163,33 +160,28 @@ CharButtonGenerator::~CharButtonGenerator()
 
 int onClick2(int id, int event, int x, int y){
 
-	printf("ID: %d \n", id);
+	CharButton *btn = buttonArray[id];
+
+	//buttonArray[id] = charButton;
 
 	if (event == 1)
 	{
-		offsetX2 = x - charButton->getX();
-		offsetY2 = y - charButton->getY();
+		//printf("1- ID: %d \n", id);
+		offsetX2 = x - btn->getX();
+		offsetY2 = y - btn->getY();
 
+		currentButtonID = id;
 
-		printf("Clicked 1: %d %d \n", x, y);
-		printf("Clicked 2: %d %d \n", offsetX2, offsetY2);
-
+		//printf("Clicked 1: %d %d \n", x, y);
+		//printf("Clicked 2: %d %d \n", offsetX2, offsetY2);
 	}
 
 	if (event == 2)
 	{
-		printf("Move 1 : %d %d \n", x, y);
-		//int offsetX = clickedX - btn->getInitedX();
-		//int offsetY = clickedY - btn->getInitedY();
-
-		printf("Move 2 : %d %d \n", x, y);
-
-
-		charButton->setX(x - offsetX2);
-		charButton->setY(y - offsetY2);
+		//printf("2- ID: %d \n", id);
+		btn->setX(x - offsetX2);
+		btn->setY(y - offsetY2);
 	}
-
-
 	return 0;
 }
 
@@ -208,7 +200,7 @@ int CharButtonGenerator::countLetterOfAnswer(char answer[]){
 		}
 
 	}
-	printf("Bar: %d: \n", letterCounter);
+	//printf("Bar: %d: \n", letterCounter);
 	return letterCounter;
 }
 
@@ -222,11 +214,11 @@ int CharButtonGenerator::countNumbersOfAnswer(char answer[]){
 		{
 			if (answer[i] == j){
 				numbersCounter++;
-				printf("Foo: %d: \n ", answer[i]);
+				//printf("Foo: %d: \n ", answer[i]);
 			}
 		}
 	}
 
-	printf("Bar: %d: \n", numbersCounter);
+	//printf("Bar: %d: \n", numbersCounter);
 	return numbersCounter;
 }

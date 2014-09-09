@@ -47,6 +47,9 @@ void AppMain()
 	//ViewSetSize(view, 24, 24);
 	//TextAdd(6, 0, "A", ButtonFont);
 
+
+
+
 	CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815");
 
 	//btn = new CharButton('B', 0, 20, 20, onClick, 0);

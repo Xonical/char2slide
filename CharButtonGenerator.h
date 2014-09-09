@@ -3,6 +3,7 @@
 #include <vector>
 #include <time.h>
 #include <algorithm>
+#include "CharButton.h";
 
 using namespace std;
 
@@ -18,5 +19,7 @@ private:
 	int countLetterOfAnswer(char answer[]);
 	int countNumbersOfAnswer(char answer[]);
 	vector <char> randomizeBasic(int basicNumbers, int basicLetters);
+
+
 };
 
