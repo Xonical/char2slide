@@ -9,7 +9,6 @@ int onClick2(int id, int event, int x, int y);
 int offsetX2;
 int offsetY2;
 vector <CharButton> vecCharButtons;
-int currentButtonID;
 CharButton *buttonArray[2];
 
 CharButtonGenerator::CharButtonGenerator(char answer[])
@@ -170,8 +169,6 @@ int onClick2(int id, int event, int x, int y){
 		offsetX2 = x - btn->getX();
 		offsetY2 = y - btn->getY();
 
-		currentButtonID = id;
-
 		//printf("Clicked 1: %d %d \n", x, y);
 		//printf("Clicked 2: %d %d \n", offsetX2, offsetY2);
 	}
@@ -195,7 +192,7 @@ int CharButtonGenerator::countLetterOfAnswer(char answer[]){
 		{
 			if (answer[i] == j){
 				letterCounter++;
-				printf("Foo: %d: \n ", answer[i]);
+				//printf("Foo: %d: \n ", answer[i]);
 			}
 		}
 

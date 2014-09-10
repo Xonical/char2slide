@@ -5,6 +5,8 @@
 #include "MyButton.h"
 #include "CharButtonGenerator.h"
 #include "CharButton.h"
+#include "MainMenueView.h"
+
 
 int LogoImage;
 int LogoView;
@@ -32,8 +34,7 @@ void AppMain()
 {
 	// Application initialization code goes here.  Create the items / objects / etc.
 	// that your app will need while it is running.
-	//LogoImage = ImageAdd("Images/Logo.png"); // file location: Debug/Assets/Images/Logo.png
-	//LogoView = ViewAdd(LogoImage, 0, 0);
+
 
 
 	LandscapeMode();
@@ -49,8 +50,9 @@ void AppMain()
 
 
 
+	new MainMenueView();
 
-	CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815");
+	//CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815");
 
 	//btn = new CharButton('B', 0, 20, 20, onClick, 0);
 
