@@ -10,11 +10,13 @@ return  erg;
 }
 */
 
+int drawZone;
+bool isFirstTimeCalled = true;
 
 
 //MyDragon::MyDragon()
 //{
-//	//drawZone = DrawAdd(0, 0, 480, 320);
+//	drawZone = DrawAdd(0, 0, 480, 320);
 //}
 //
 //
@@ -22,6 +24,7 @@ return  erg;
 //{
 //}
 
+//int drawZone = DrawAdd(0, 0, 480, 320);
 
 
 void DisplayAbmessung(int &dispWidth, int &dispHeight)
@@ -44,8 +47,13 @@ void DisplayAbmessung(int &dispWidth, int &dispHeight)
 }
 
 void DrawPanel(Panel *panel){
-	int drawZone = DrawAdd(0, 0, 480, 320);
-	DrawAdd(panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
-	DrawSetFillColor(drawZone, 0x66CDAA);
+
+	if (isFirstTimeCalled){
+		drawZone = DrawAdd(0, 0, 480, 320);
+		isFirstTimeCalled = false;
+	}
+
+	DrawSetFillColor(drawZone, /*0x66CDAA*/ (int)panel->getColor());
+	DrawSquareFill(drawZone, panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
 }
 

@@ -15,6 +15,6 @@ private:
 	int answerbar;
 	int topbar;
 	int drawZone;
-	Panel *panel;
+	Panel *panelGameArea;
 };
 

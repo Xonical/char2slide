@@ -14,5 +14,5 @@ int TextAdd(int x, int y, string einText);
 void DisplayAbmessung(int &dispWidth, int &dispHeight);
 void DrawPanel(Panel *panel);
 //private:
-//int drawZone;
+//	int drawZone;
 //};

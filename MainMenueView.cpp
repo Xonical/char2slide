@@ -20,15 +20,13 @@ void MainMenueView::createView(){
 	//GameArea::x = 0;
 	//GameArea::y = 0;
 	printf("MMV 1");
-	panel = new Panel(0, 0, 480, 320, Color::darkcyan);
-	//DrawPanel(panelGameArea);
-	drawZone = DrawAdd(0, 0, 480, 320);
+	panelGameArea = new Panel(0, 0, 480, 320, Color::darkcyan);
+	DrawPanel(panelGameArea);
+	//drawZone = DrawAdd(0, 0, 480, 320);
 	//DrawAdd(panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
-	DrawSetFillColor(drawZone, 0x66CDAA);
-	DrawSquareFill(drawZone, panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
+	//DrawSetFillColor(drawZone, 0x66CDAA);
+	//DrawSquareFill(drawZone, panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
 	printf("MMV 2");
-
-	DrawLine(drawZone, 0, 0, 100, 100);
 
 
 
