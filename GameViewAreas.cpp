@@ -1,6 +1,6 @@
 #include "GameViewAreas.h"
 
-int TopbarArea::x;
+//int TopbarArea::x;
 
 TopbarArea::TopbarArea()
 {

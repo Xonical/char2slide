@@ -1,7 +1,8 @@
 #pragma once
-#include "DragonFireSDK.h"
+#include "MyDragon.h"
 #include "CharButtonGenerator.h"
 #include "GameViewAreas.h"
+#include "Color.h"
 
 class MainMenueView
 {
@@ -14,5 +15,6 @@ private:
 	int answerbar;
 	int topbar;
 	int drawZone;
+	Panel *panel;
 };
 

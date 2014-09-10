@@ -5,10 +5,24 @@ using namespace std;
 /*
 int TextAdd(int x, int y, string einText)
 {
-	int erg = TextAdd(x, y, (char*)einText.c_str());
-	return  erg;
+int erg = TextAdd(x, y, (char*)einText.c_str());
+return  erg;
 }
 */
+
+
+
+//MyDragon::MyDragon()
+//{
+//	//drawZone = DrawAdd(0, 0, 480, 320);
+//}
+//
+//
+//MyDragon::~MyDragon()
+//{
+//}
+
+
 
 void DisplayAbmessung(int &dispWidth, int &dispHeight)
 {
@@ -27,5 +41,11 @@ void DisplayAbmessung(int &dispWidth, int &dispHeight)
 		dispWidth = 320;
 		dispHeight = 568;
 	}
+}
+
+void DrawPanel(Panel *panel){
+	int drawZone = DrawAdd(0, 0, 480, 320);
+	DrawAdd(panel->getX(), panel->getY(), panel->getWidth(), panel->getHeight());
+	DrawSetFillColor(drawZone, 0x66CDAA);
 }
 
