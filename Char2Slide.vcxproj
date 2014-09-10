@@ -94,6 +94,7 @@
     <ClCompile Include="MyButtonV3.cpp" />
     <ClCompile Include="MyDragon.cpp" />
     <ClCompile Include="MyLabel.cpp" />
+    <ClCompile Include="GameViewAreas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharButton.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="MyButtonV3.h" />
     <ClInclude Include="MyDragon.h" />
     <ClInclude Include="MyLabel.h" />
+    <ClInclude Include="GameViewAreas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

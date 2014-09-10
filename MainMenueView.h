@@ -1,5 +1,7 @@
 #pragma once
 #include "DragonFireSDK.h"
+#include "CharButtonGenerator.h"
+#include "GameViewAreas.h"
 
 class MainMenueView
 {

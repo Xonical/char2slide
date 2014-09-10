@@ -7,7 +7,6 @@
 #include "CharButton.h"
 #include "MainMenueView.h"
 
-
 int LogoImage;
 int LogoView;
 
@@ -52,7 +51,8 @@ void AppMain()
 
 	new MainMenueView();
 
-	//CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815");
+	//Settings::getInstance().setPhoneWidth(480);
+
 
 	//btn = new CharButton('B', 0, 20, 20, onClick, 0);
 
