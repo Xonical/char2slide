@@ -1,7 +1,7 @@
 #pragma once
 #include "Panel.h"
 
-class CharButtonPanel : Panel
+class CharButtonPanel : public Panel
 {
 public:
 	CharButtonPanel();

@@ -3,6 +3,8 @@
 #include "CharButtonGenerator.h"
 #include "GameViewAreas.h"
 #include "Color.h"
+//#include "AnswerPanel.h"
+#include "CharButtonPanel.h"
 
 class MainMenueView
 {
@@ -16,5 +18,6 @@ private:
 	int topbar;
 	int drawZone;
 	Panel *panelGameArea;
+	Panel *panelTopbar;
 };
 

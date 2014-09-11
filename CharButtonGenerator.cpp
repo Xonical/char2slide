@@ -10,9 +10,14 @@ int offsetX2;
 int offsetY2;
 vector <CharButton> vecCharButtons;
 CharButton *buttonArray[2];
+CharButtonPanel *charPanel;
+Panel *answerPanel;
 
-CharButtonGenerator::CharButtonGenerator(char answer[])
+CharButtonGenerator::CharButtonGenerator(char answer[], CharButtonPanel *charPanel_, Panel *answerPanel_)
 {
+	charPanel = charPanel_;
+	answerPanel = answerPanel_;
+
 	int letters = countLetterOfAnswer(answer);
 
 	int numbers = countNumbersOfAnswer(answer);
@@ -62,13 +67,6 @@ CharButtonGenerator::CharButtonGenerator(char answer[])
 
 	int basicNumbers = (numbers * factor);
 
-	//int basicNumbersAndLetters = (basicLetters + basicNumbers - strlen(answer));
-
-
-	//bool isAnswerContainingLetters;
-	//bool isAnswerContainingNumbers;
-	//isAnswerContainingLetters = letters > 0 ? true : false;
-	//isAnswerContainingNumbers = numbers > 0 ? true : false;
 
 	vector <char> vecBasic;
 	vecBasic = randomizeBasic(basicNumbers, basicLetters);
@@ -94,7 +92,12 @@ CharButtonGenerator::CharButtonGenerator(char answer[])
 	for (int i = 0; i < 2/*vecBasic.size*/; i++)
 	{
 		//printf("Test:  %d", c);
-		charButton = new CharButton(vecBasic.at(i), i, 20 + i * 30, 20, onClick2, i);
+
+
+
+		charButton = new CharButton(vecBasic.at(i), 0, charPanel_->getX() + i * 30, charPanel_->getY() + 20, onClick2, i);
+
+		//charButton = new CharButton(vecBasic.at(i), i, 20 + i * 30, 20, onClick2, i);
 		//vecCharButtons.push_back(charButton);
 		buttonArray[i] = charButton;
 	}
@@ -161,7 +164,6 @@ int onClick2(int id, int event, int x, int y){
 
 	CharButton *btn = buttonArray[id];
 
-	//buttonArray[id] = charButton;
 
 	if (event == 1)
 	{
@@ -175,9 +177,46 @@ int onClick2(int id, int event, int x, int y){
 
 	if (event == 2)
 	{
-		//printf("2- ID: %d \n", id);
-		btn->setX(x - offsetX2);
-		btn->setY(y - offsetY2);
+		int newX = x - offsetX2;
+		int newY = y - offsetY2;
+
+		printf("1: %d \n", newX);
+		printf("2: %d \n", newY);
+		printf("3: %d \n", charPanel->getX());
+		printf("4: %d \n", charPanel->getY());
+		printf("5: %d \n", charPanel->getWidth());
+
+		//Check if the charButton ist moved outside Panel(Top, Left and Right)
+		bool isMovedToLeftRightTopOutsideCharPanel = newX < charPanel->getX()
+			|| newY < charPanel->getY()
+			|| newX >(charPanel->getWidth() - 24);
+
+
+		if (!isMovedToLeftRightTopOutsideCharPanel){
+			// It's not moved outside (Top, Left, Right)
+			// now we can check the bottom
+			btn->setX(newX);
+
+
+			// 24 = Button size
+			int absoluteWallY = charPanel->getY() + charPanel->getHeight() - 24;// +answerPanel->getHeight();
+			printf("6: %d \n", absoluteWallY);
+			int maxBottom = 320 - 14;
+			//int absolutePositionY = absoluteY + newY;
+
+			//int testWallY = absoluteWallY + answerPanel->getHeight / 2;
+
+
+			if (newY < absoluteWallY){
+				btn->setY(newY);
+			}
+		}
+		else{
+
+		}
+
+
+
 	}
 	return 0;
 }
