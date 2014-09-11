@@ -5,16 +5,22 @@
 void test();
 
 CharButton *charButton;
+CharButton *charAnswerButton;
 int onClick2(int id, int event, int x, int y);
 int offsetX2;
 int offsetY2;
-vector <CharButton> vecCharButtons;
+vector <CharButton*> vecCharButtons;
+vector <CharButton*> vecAnswerButtons;
 CharButton *buttonArray[2];
 CharButtonPanel *charPanel;
 Panel *answerPanel;
+bool isButtonSetToUnvisible(CharButton *btn);
 
 CharButtonGenerator::CharButtonGenerator(char answer[], CharButtonPanel *charPanel_, Panel *answerPanel_)
 {
+	initAnswerbar(answer);
+
+
 	charPanel = charPanel_;
 	answerPanel = answerPanel_;
 
@@ -88,18 +94,26 @@ CharButtonGenerator::CharButtonGenerator(char answer[], CharButtonPanel *charPan
 	// so we must have shuffle again
 	random_shuffle(vecBasic.begin(), vecBasic.end());
 
+
+
+	font = FontAdd("Helvetica", "Bold", 18, 0xFFFFFF);
+
+	int offSetY = charPanel_->getY() + 20;
+	int offSetX = 12;
+
 	//vecCharButtons = new vector <CharButton>();
-	for (int i = 0; i < 2/*vecBasic.size*/; i++)
+	for (int i = 1; i <= vecBasic.size(); i++)
 	{
-		//printf("Test:  %d", c);
+		//printf("Schleife y-Achse: %d    char: %c \n", offSetY, vecBasic.at(i - 1));
+		charButton = new CharButton(vecBasic.at(i - 1), font, /*charPanel_->getX() + i * 30 + 12*/offSetX, offSetY, onClick2, i - 1);
 
-
-
-		charButton = new CharButton(vecBasic.at(i), 0, charPanel_->getX() + i * 30, charPanel_->getY() + 20, onClick2, i);
-
-		//charButton = new CharButton(vecBasic.at(i), i, 20 + i * 30, 20, onClick2, i);
-		//vecCharButtons.push_back(charButton);
-		buttonArray[i] = charButton;
+		offSetX += 30;
+		if (i % 15 == 0){
+			// Next "row"
+			offSetY += 30;
+			offSetX = 12;
+		}
+		vecCharButtons.push_back(charButton);
 	}
 }
 
@@ -133,6 +147,24 @@ vector <char> CharButtonGenerator::randomizeBasic(int basicNumbers, int basicLet
 
 CharButtonGenerator::~CharButtonGenerator()
 {
+
+}
+
+void CharButtonGenerator::initAnswerbar(char answer[]){
+
+	font = FontAdd("Helvetica", "Bold", 18, 0xFFFFFF);
+
+	for (int i = 0; i < strlen(answer); i++)
+	{
+		//printf("Test:  %d", c);
+
+
+
+
+		charAnswerButton = new CharButton(answer[i], font, 0 + i * 30, 273 + 8, i);
+		vecAnswerButtons.push_back(charAnswerButton);
+	}
+
 }
 
 
@@ -162,8 +194,12 @@ CharButtonGenerator::~CharButtonGenerator()
 
 int onClick2(int id, int event, int x, int y){
 
-	CharButton *btn = buttonArray[id];
+	//CharButton *btn = buttonArray[id];
+	CharButton * btn = vecCharButtons.at(id);
 
+	if (btn->getX() == -24){
+		return 0;
+	}
 
 	if (event == 1)
 	{
@@ -199,17 +235,39 @@ int onClick2(int id, int event, int x, int y){
 
 
 			// 24 = Button size
-			int absoluteWallY = charPanel->getY() + charPanel->getHeight() - 24;// +answerPanel->getHeight();
-			printf("6: %d \n", absoluteWallY);
-			int maxBottom = 320 - 14;
-			//int absolutePositionY = absoluteY + newY;
+			int areaYBegin = charPanel->getY() + charPanel->getHeight() - 24;// +answerPanel->getHeight();
+			//printf("6: %d \n", absoluteWallY);
+			int areaYEnd = areaYBegin + answerPanel->getHeight() + 5;
 
 			//int testWallY = absoluteWallY + answerPanel->getHeight / 2;
 
 
-			if (newY < absoluteWallY){
+			if (newY < areaYEnd){
 				btn->setY(newY);
 			}
+
+
+			if (newY>278){
+
+				if (isButtonSetToUnvisible(btn)){
+
+					bool allButtonsAreCorrect = true;
+					btn->setX(-24);
+					// check all Buttons, if they are visible (visible == correct)
+					for each (CharButton *var in vecAnswerButtons){
+						if (var->getIsCorrect() == false){
+							allButtonsAreCorrect = false;
+						}
+					}
+					if (allButtonsAreCorrect){
+						printf("I won---");
+					}
+
+				}
+
+
+			}
+
 		}
 		else{
 
@@ -219,6 +277,55 @@ int onClick2(int id, int event, int x, int y){
 
 	}
 	return 0;
+}
+
+bool isButtonSetToUnvisible(CharButton *btn){
+
+	for each (CharButton *var in vecAnswerButtons)
+	{
+		int minX = var->getX();
+		int maxX = var->getX() + 24;
+
+
+		printf("7: %d \n", minX);
+		printf("8: %d \n", maxX);
+		printf("8.1: %d \n", btn->getX());
+
+
+		for (int i = minX; i <= maxX; i++){
+			if (btn->getX() == i){
+				printf("9: %d \n", btn->getX());
+				printf("10: %c \n", var->getChar());
+				printf("11: %c \n", btn->getChar());
+
+
+
+
+
+				if (var->getChar() == btn->getChar()){
+
+
+					if (btn->getIsCorrect()){
+						// Answer-Char was already set tocorrect
+						// Beware of double unvisible Chars (-24x)
+						return false;
+
+					}
+					else{
+						var->setIsCorrect(true);
+						printf("Correct");
+						return true;
+					}
+
+
+
+				}
+			}
+		}
+	}
+	printf("False");
+	// char-Button was not moved to the correct Answer-Button
+	return false;
 }
 
 int CharButtonGenerator::countLetterOfAnswer(char answer[]){

@@ -5,7 +5,9 @@
 #include "MyButton.h"
 #include "CharButtonGenerator.h"
 #include "CharButton.h"
-#include "MainMenueView.h"
+#include "GameView.h"
+#include "MainView.h"
+#include "PreGameView.h"
 
 int LogoImage;
 int LogoView;
@@ -31,33 +33,13 @@ CharButton *btn;
 
 void AppMain()
 {
-	// Application initialization code goes here.  Create the items / objects / etc.
-	// that your app will need while it is running.
-
-
-
 	LandscapeMode();
 
-	//btnA = ButtonAdd("Images/char_", 0, 0, onButtonClick, 0);
-	int ButtonFont = FontAdd("Helvetica", "Bold", 18, 0xFFFFFF);
-	//TextAdd(6, 0, "A", ButtonFont);
+	//int ButtonFont = FontAdd("Helvetica", "Bold", 18, 0xFFFFFF);
 
-
-	//int view = ViewAdd("Images/char_1.png", 0, 0);
-	//ViewSetSize(view, 24, 24);
-	//TextAdd(6, 0, "A", ButtonFont);
-
-
-
-	new MainMenueView();
-
-	//Settings::getInstance().setPhoneWidth(480);
-
-
-	//btn = new CharButton('B', 0, 20, 20, onClick, 0);
-
-
-
+	//new PreGameView();
+	//new MainView();
+	new GameView();
 }
 
 

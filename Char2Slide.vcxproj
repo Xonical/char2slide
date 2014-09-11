@@ -87,32 +87,40 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="BetweenView.cpp" />
+    <ClCompile Include="CategorySQL.cpp" />
     <ClCompile Include="CharButton.cpp" />
     <ClCompile Include="CharButtonGenerator.cpp" />
     <ClCompile Include="CharButtonPanel.cpp" />
     <ClCompile Include="Color.cpp" />
-    <ClCompile Include="MainMenueView.cpp" />
+    <ClCompile Include="GameView.cpp" />
+    <ClCompile Include="MainView.cpp" />
     <ClCompile Include="MyButton.cpp" />
     <ClCompile Include="MyButtonV3.cpp" />
     <ClCompile Include="MyDragon.cpp" />
     <ClCompile Include="MyLabel.cpp" />
     <ClCompile Include="GameViewAreas.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="PreGameView.cpp" />
     <ClCompile Include="QuestionAnswerConnector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BetweenView.h" />
+    <ClInclude Include="CategorySQL.h" />
     <ClInclude Include="CharButton.h" />
     <ClInclude Include="CharButtonGenerator.h" />
     <ClInclude Include="CharButtonPanel.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="DragonFireSDK.h" />
-    <ClInclude Include="MainMenueView.h" />
+    <ClInclude Include="GameView.h" />
+    <ClInclude Include="MainView.h" />
     <ClInclude Include="MyButton.h" />
     <ClInclude Include="MyButtonV3.h" />
     <ClInclude Include="MyDragon.h" />
     <ClInclude Include="MyLabel.h" />
     <ClInclude Include="GameViewAreas.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="PreGameView.h" />
     <ClInclude Include="QuestionAnswerConnector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

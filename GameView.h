@@ -6,11 +6,11 @@
 //#include "AnswerPanel.h"
 #include "CharButtonPanel.h"
 
-class MainMenueView
+class GameView
 {
 public:
-	MainMenueView();
-	~MainMenueView();
+	GameView();
+	~GameView();
 private:
 	void createView();
 	int statusbar;
