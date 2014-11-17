@@ -37,9 +37,11 @@ void AppMain()
 
 	//int ButtonFont = FontAdd("Helvetica", "Bold", 18, 0xFFFFFF);
 
-	//new PreGameView();
+	new PreGameView();
 	//new MainView();
-	new GameView();
+	//new GameView();
+
+
 }
 
 

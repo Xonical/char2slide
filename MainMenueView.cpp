@@ -1,18 +1,21 @@
-#include "GameView.h"
+#include "MainMenueView.h"
 #include "Panel.h"
 #include "MyDragon.h"
 
-GameView::GameView()
+MainMenueView::MainMenueView()
 {
 	createView();
 }
 
 
-GameView::~GameView()
+MainMenueView::~MainMenueView()
 {
 }
 
-void GameView::createView(){
+void MainMenueView::createView(){
+
+	printf("MMV 1");
+	printf("MMV 2");
 
 	panelGameArea = new Panel(0, 0, 480, 320, Color::white);
 	DrawPanel(panelGameArea);
@@ -32,13 +35,13 @@ void GameView::createView(){
 	Panel *panelSecondSeperator = new Panel(0, 273, 480, 5, Color::chocolate);
 	DrawPanel(panelSecondSeperator);
 
-	Panel *answerPanel = new Panel(0, 278, 480, 28, Color::blanchedalmond);
+	AnswerPanel *answerPanel = new AnswerPanel(0, 278, 480, 28, Color::blanchedalmond);
 	DrawPanel(answerPanel);
 
 	Panel *panelBottombar = new Panel(0, 306, 480, 14, Color::aquamarine);
 	DrawPanel(panelBottombar);
 
 
-	CharButtonGenerator *gen = new CharButtonGenerator("Foo", panelCharArea, answerPanel);
+	CharButtonGenerator *gen = new CharButtonGenerator("ABCXYZ0815", panelCharArea, answerPanel);
 }
 
